@@ -75,13 +75,13 @@ const translations = [
   ['.contact-left .eyebrow', '<span class="eyebrow-line"></span> LET’S MAKE A PLAN', '<span class="eyebrow-line"></span> चलिए योजना बनाते हैं'], ['.contact-left h2', 'Ready for a<br /><em>fresh start?</em>', 'तैयार हैं<br /><em>नई शुरुआत के लिए?</em>'], ['.contact-left>p', 'Tell us a little about your project. We’ll get back to you to arrange a no-pressure estimate.', 'अपने प्रोजेक्ट के बारे में बताइए। हम बिना किसी दबाव के अनुमान के लिए आपसे संपर्क करेंगे।'], ['.contact-left .button', 'Email for an estimate <span>↗</span>', 'अनुमान के लिए ईमेल करें <span>↗</span>'],
   ['.contact-detail:nth-child(1)>span', 'GIVE US A CALL', 'हमें कॉल करें'], ['.contact-detail:nth-child(1) a', 'Add your phone number ↗', 'अपना फ़ोन नंबर जोड़ें ↗'], ['.contact-detail:nth-child(2)>span', 'SEND A NOTE', 'ईमेल भेजें'], ['.contact-detail:nth-child(3)>span', 'WHERE WE WORK', 'हमारा सेवा क्षेत्र'], ['.contact-detail:nth-child(3) p', 'Your town and nearby areas', 'आपका शहर और आसपास के इलाके'], ['.contact-detail:nth-child(4)>span', 'WHEN WE’RE AROUND', 'काम का समय'], ['.contact-detail:nth-child(4) p', 'Monday–Friday · 8am–5pm', 'सोमवार–शुक्रवार · सुबह 8–शाम 5'], ['.contact-edit-note', 'Before publishing, replace the sample phone, email, location, prices and project photos with your business details.', 'प्रकाशित करने से पहले फ़ोन, ईमेल, जगह, कीमतें और प्रोजेक्ट फ़ोटो अपनी जानकारी से बदलें।'], ['.site-footer>a:last-child', 'BACK TO TOP ↑', 'ऊपर जाएँ ↑']
 ];
-let currentLanguage = 'en';
+let currentLanguage = 'hi';
 const originalContent = translations.map(([selector]) => {
   const element = document.querySelector(selector);
   return element ? element.innerHTML : '';
 });
-languageButton.addEventListener('click', () => {
-  currentLanguage = currentLanguage === 'en' ? 'hi' : 'en';
+function setLanguage(language) {
+  currentLanguage = language;
   document.documentElement.lang = currentLanguage;
   document.body.classList.toggle('hindi', currentLanguage === 'hi');
   translations.forEach(([selector, , hindi], index) => {
@@ -90,6 +90,10 @@ languageButton.addEventListener('click', () => {
   });
   languageButton.textContent = currentLanguage === 'hi' ? 'English' : 'हिंदी';
   languageButton.setAttribute('aria-label', currentLanguage === 'hi' ? 'Switch to English' : 'हिंदी में देखें');
+}
+setLanguage(currentLanguage);
+languageButton.addEventListener('click', () => {
+  setLanguage(currentLanguage === 'en' ? 'hi' : 'en');
 });
 
 // Bring sections in gently as they enter the viewport.
