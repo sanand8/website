@@ -76,10 +76,7 @@ const translations = [
   ['.contact-detail:nth-child(1)>span', 'GIVE US A CALL', 'हमें कॉल करें'], ['.contact-detail:nth-child(1) a', 'Add your phone number ↗', 'अपना फ़ोन नंबर जोड़ें ↗'], ['.contact-detail:nth-child(2)>span', 'SEND A NOTE', 'ईमेल भेजें'], ['.contact-detail:nth-child(3)>span', 'WHERE WE WORK', 'हमारा सेवा क्षेत्र'], ['.contact-detail:nth-child(3) p', 'Your town and nearby areas', 'आपका शहर और आसपास के इलाके'], ['.contact-detail:nth-child(4)>span', 'WHEN WE’RE AROUND', 'काम का समय'], ['.contact-detail:nth-child(4) p', 'Monday–Friday · 8am–5pm', 'सोमवार–शुक्रवार · सुबह 8–शाम 5'], ['.contact-edit-note', 'Before publishing, replace the sample phone, email, location, prices and project photos with your business details.', 'प्रकाशित करने से पहले फ़ोन, ईमेल, जगह, कीमतें और प्रोजेक्ट फ़ोटो अपनी जानकारी से बदलें।'], ['.site-footer>a:last-child', 'BACK TO TOP ↑', 'ऊपर जाएँ ↑']
 ];
 let currentLanguage = 'hi';
-const originalContent = translations.map(([selector]) => {
-  const element = document.querySelector(selector);
-  return element ? element.innerHTML : '';
-});
+const originalContent = translations.map(([, english]) => english);
 function setLanguage(language) {
   currentLanguage = language;
   document.documentElement.lang = currentLanguage;
